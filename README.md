@@ -1,8 +1,9 @@
 # Himeno Sena
 
-[![Build](https://github.com/BIYUEHU/HimenoSena/actions/workflows/build.yml/badge.svg)](https://github.com/BIYUEHU/HimenoSena/actions/workflows/build.yml) ![License](https://img.shields.io/badge/license-BCU-E6AD88) ![GitHub contributors](https://img.shields.io/github/contributors/biyuehu/HimenoSena)
+ ![LoveSena](https://img.shields.io/badge/Love-SENA-e6ad88?style=flat-square) [![Build](https://github.com/biyuehu/HimenoSena/actions/workflows/build.yml/badge.svg)](https://github.com/biyuehu/HimenoSena/actions/workflows/build.yml) ![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg?style=flat-square) ![GitHub contributors](https://img.shields.io/github/contributors/biyuehu/HimenoSena?) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![Codeberg](https://img.shields.io/badge/Codeberg-2185D0?style=flat-square&logo=codeberg&logoColor=white)
 
-Hi there! This is a character website project designed for **Himeno Sena**.
+<!-- markdownlint-disable-next-line -->
+Hi there! This is a character website project designed for <font color="#E6AD88" size="5rem">**the best girl in the world** — <font size="6rem">**Himeno Sena!**</font></font>
 
 - **Himeno Sena** (姫野星奏/ひめのせな) is a main character in the Japanese visual novel [Koi x Shin Ai Kanojo (恋×シンアイ彼女)](http://ustrack.amusecraft.com/koikake/).
 - Welcome any people who liked **Himeno Sena** to leave own messages, it'll display on the website. More details refer to [this](/docs/messages.md) .

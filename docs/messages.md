@@ -36,8 +36,8 @@
 
 ---
 
-- [Fork this repository](https://github.com/BIYUEHU/HimenoSena/fork) to your own account.
-- [このリポジトリをFork](https://github.com/BIYUEHU/HimenoSena/fork) して自分のアカウントにコピーします。
+- [Fork this repository](https://github.com/biyuehu/HimenoSena/fork) to your own account.
+- [このリポジトリをFork](https://github.com/biyuehu/HimenoSena/fork) して自分のアカウントにコピーします。
 - [Fork 本仓库](https://github.com/biyuehu/HimenoSena/fork) 到你自己的帐户。
 
 ---

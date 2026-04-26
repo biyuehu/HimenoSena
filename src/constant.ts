@@ -8,7 +8,7 @@ export const DEFAULT_SETTINGS_START_DATE = '2023-07-05'
 
 export const DEFAULT_MESSAGE: Message = {
   msg: '传达之物，皆数传达；何曾无理由修成正果？铅华尽洗，磨难遍历；何曾无理由相信将是回忆过后的美好续篇？不觉间，娇妻久归，笑靥如花，我的世界唯有星空与你。',
-  user: 'BIYUEHU',
+  user: 'biyuehu',
   name: 'AS'
 }
 
