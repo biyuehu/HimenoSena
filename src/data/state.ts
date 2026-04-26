@@ -18,7 +18,6 @@ function setActiveCounter() {
   }
   postView()
     .then(() => {
-      console.log('View posted')
       if (!isVisited) setStorageFiled(StorageKeys.STATE_VISITED, true)
     })
     .catch((err) => {

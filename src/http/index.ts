@@ -5,12 +5,8 @@ const VIEW_API_URL = 'https://hotaru.icu/api/utils/view/himeno-sena'
 export function getViews(): Promise<number> {
   if (!('HIMENO_SENA_BUILD_TIME' in globalThis)) return Promise.resolve(0)
   return fetch(VIEW_API_URL)
-    .then((res) => res.text())
-    .then((value) => {
-      const num = Number.parseInt(value, 10)
-      if (!Number.isNaN(num)) return num
-      throw new Error()
-    })
+    .then((res) => res.json())
+    .then(({ count }) => count)
 }
 
 export function postView() {
@@ -19,5 +15,5 @@ export function postView() {
 }
 
 export function fetchMessageList(): Promise<Message[]> {
-  return fetch('https://cdn.jsdelivr.net/gh/biyuehu/himenosena/public/messages.json').then((res) => res.json())
+  return fetch('https://cdn.jsdelivr.net/gh/biyuehu/himenosena/messages.json').then((res) => res.json())
 }
