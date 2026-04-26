@@ -19,27 +19,28 @@ export function getStorageFiled<K extends StorageKeys, D extends GetStorageKeyVa
   key: K,
   defaultValue: R
 ): D {
-  const value = localStorage.getItem(`sena_${key}`)
+  const field = `himeno_sena_${key}`
+  const value = localStorage.getItem(field)
   if (!value) {
-    localStorage.setItem(key, String(defaultValue))
+    localStorage.setItem(field, String(defaultValue))
     return defaultValue
   }
   if (typeof defaultValue === 'number') {
     const result = Number(value)
     if (Number.isNaN(result)) {
-      localStorage.setItem(key, String(defaultValue))
+      localStorage.setItem(field, String(defaultValue))
       return defaultValue
     }
     return result as D
   }
   if (typeof defaultValue === 'boolean') return (value === 'true') as D
   if (['', 'null', 'undefined'].includes(value.trim())) {
-    localStorage.setItem(key, String(defaultValue))
+    localStorage.setItem(field, String(defaultValue))
     return defaultValue
   }
   return value as D
 }
 
 export function setStorageFiled<K extends StorageKeys>(key: K, value: GetStorageKeyValueType<K>): void {
-  localStorage.setItem(`sena_${key}`, String(value))
+  localStorage.setItem(`himeno_sena_${key}`, String(value))
 }

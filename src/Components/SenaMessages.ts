@@ -4,8 +4,6 @@ import { DEFAULT_MESSAGE, GITHUB_URL, LEAVE_MESSAGES_DOCS } from '../constant.ts
 import type { Message } from '../types.ts'
 import I18n from '../utils/i18n.ts'
 import './SenaTextBlock.ts'
-
-import { SenaError } from '../utils/error.ts'
 import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
 
 @customElement('sena-messages')
@@ -20,10 +18,9 @@ export class SenaMessages extends LitElement {
   }
 
   public override render() {
-    if (!this.messages) throw new SenaError('sena-messages component: messages property is required')
     return html`
     <link rel="stylesheet" href="./styles.css">
-    <sena-text-block title="Messages">
+    <sena-text-block head="Messages">
       <p class="messages" @click="${this.refreshMessage}">${this.message.msg}——By <a href="${GITHUB_URL}/${this.message.user}" target="_blank">${this.message.name}</a></p>
       <a href="${LEAVE_MESSAGES_DOCS}" target="_blank">${I18n.t`messages.button`}</a>
     </sena-text-block>
@@ -37,6 +34,3 @@ export class SenaMessages extends LitElement {
     })
   }
 }
-
-
-

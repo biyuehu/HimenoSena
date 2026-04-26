@@ -2,7 +2,7 @@
   "name": "@himeno/sena",
   "exports": {},
   "tasks": {
-    "dev": "deno serve --host 0.0.0.0 --allow-net --allow-read --allow-write --allow-run scripts/serve.ts",
+    "dev": "deno serve --host 0.0.0.0 --port 612 --allow-net --allow-read --allow-write --allow-run scripts/serve.ts",
     "build": "deno run --allow-read --allow-write --allow-run scripts/build.ts"
   },
   "imports": {
@@ -18,7 +18,6 @@
     ],
     "module": "esnext",
     "moduleResolution": "bundler",
-    "strict": true,
-    "experimentalDecorators": false
+    "strict": true
   }
 }

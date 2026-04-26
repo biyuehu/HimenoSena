@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators.js'
 import { SenaComponent } from '../src/Components/SenaComponent.ts'
 import { copyFile, safe } from './utils.ts'
 
-const [PUBLIC_DIR, PHP_DIR, DEST_DIR] = /* Deno.args */ ['public', 'php', 'build']
+const [PUBLIC_DIR, DEST_DIR] = /* Deno.args */ ['public', 'build']
 
 if (!PUBLIC_DIR || !DEST_DIR) {
   console.error('Usage: build.ts <public_dir> <dest_dir>')
@@ -20,7 +20,8 @@ safe(() => Deno.removeSync(DEST_DIR, { recursive: true }))
 safe(() => Deno.mkdirSync(DEST_DIR, { recursive: true }))
 
 copyFile(PUBLIC_DIR, DEST_DIR)
-copyFile(PHP_DIR, DEST_DIR, (name) => name.endsWith('.php'))
+
+const HIMENO_SENA_BUILD_TIME = new Date().toLocaleString()
 
 const [indexComment, jsAndCssComment] = ((time) =>
   [
@@ -31,7 +32,7 @@ const [indexComment, jsAndCssComment] = ((time) =>
  * @license SENA WITH GPL-3.0
  * @build ${time}
  */`
-  ] as const)(new Date().toLocaleString())
+  ] as const)(HIMENO_SENA_BUILD_TIME)
 
 await new Deno.Command(Deno.execPath(), {
   args: ['bundle', '--platform', 'browser', '--minify', '--output', `${DEST_DIR}/bundle.js`, 'src/main.ts']
@@ -50,7 +51,7 @@ Deno.writeTextFileSync(
 )
 Deno.writeTextFileSync(
   `${DEST_DIR}/bundle.js`,
-  `${jsAndCssComment}\n\n${Deno.readTextFileSync(`${DEST_DIR}/bundle.js`)}`
+  `${jsAndCssComment}\n\nglobalThis.HIMENO_SENA_BUILD_TIME = ${JSON.stringify(HIMENO_SENA_BUILD_TIME)};\n${Deno.readTextFileSync(`${DEST_DIR}/bundle.js`)}`
 )
 Deno.writeTextFileSync(
   `${DEST_DIR}/styles.css`,

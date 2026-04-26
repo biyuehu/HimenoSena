@@ -65,6 +65,3 @@ export class SenaBackground extends LitElement {
     SenaEventsEmmiter.on('updateContent', () => this.updateBackground())
   }
 }
-
-
-

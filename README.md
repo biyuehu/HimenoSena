@@ -5,7 +5,7 @@
 Hi there! This is a character website project designed for **Himeno Sena**.
 
 - **Himeno Sena** (姫野星奏/ひめのせな) is a main character in the Japanese visual novel [Koi x Shin Ai Kanojo (恋×シンアイ彼女)](http://ustrack.amusecraft.com/koikake/).
-- Welcome any people who liked **Himeno Sena** to leave own messages, it'll display on the website. More details refer to [here](/docs/messages.md).
+- Welcome any people who liked **Himeno Sena** to leave own messages, it'll display on the website. More details refer to [this](/docs/messages.md) .
 - You can make suggestions or report any issues about the website or project on the [GitHub Issues](https://github.com/biyuehu/HimenoSena/issues).
 - Of course, if you are a developer and find any bugs or have any ideas, you can contribute the project to improve it by creating pull requests.
 
@@ -20,7 +20,6 @@ Please refer to the article [我做了一个姬野星奏的专属网站](/docs/a
 ## Stacks
 
 - Pages: Lit & Web Component (Fucking Vue, React, Angular, Svelte and Solid)
-- PHP (Only used to count the number of visitors and sync messages list from GitHub)
 - Development Environment: Deno (Fucking Node.Js)
 - Editor: Zed (Fucking VSCode)
 - CICD: GitHub Actions
@@ -31,8 +30,12 @@ Please refer to the article [我做了一个姬野星奏的专属网站](/docs/a
 ## Announcement and thanks
 
 - The background image is from the official CG.
-- The background music is `flower -piano arrangement-` by [水月陵](https://x.com/kiyo_mizutsuki). <!-- TODO: update here -->
 - Thanks to [火神80](https://github.com/huoshen80) for providing the server.
+- The background music:
+  - flower -piano arrangement- - 水月陵
+  - 風の止まり木 - 水月陵
+  - GLORIOUS_DAYS (Short) - yuiko
+  - 東の空から始まる世界 - yuiko
 
 ## License
 

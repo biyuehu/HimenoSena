@@ -42,9 +42,9 @@
 
 ---
 
-- Open the repository which you forked on GitHub, then find the `/public/messages.json` file and edit it.
-- GitHub上でフォークしたリポジトリを開き、`/public/messages.json` ファイルを見つけて編集してください。
-- 打开你 Fork 的仓库，在 GitHub 上找到 `/public/messages.json` 文件并编辑它。
+- Open the repository which you forked on GitHub, then find the `/messages.json` file and edit it.
+- GitHub上でフォークしたリポジトリを開き、`/messages.json` ファイルを見つけて編集してください。
+- 打开你 Fork 的仓库，在 GitHub 上找到 `/messages.json` 文件并编辑它。
 
 ---
 
