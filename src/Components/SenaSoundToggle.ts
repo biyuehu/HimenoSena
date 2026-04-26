@@ -7,6 +7,15 @@ import { betterTimeout } from '../utils/timer.ts'
 
 @customElement('sena-sound-toggle')
 export class SenaSoundToggle extends LitElement {
+  private static preloadAudios(currentIndex: number) {
+    for (let i = 0; i < AUDIOS.length; i++) {
+      if (i === currentIndex) continue // 当前在播的跳过
+      const audio = new Audio()
+      audio.preload = 'auto'
+      audio.src = `./assets/${i + 1}.mp3`
+    }
+  }
+
   @state()
   private accessor audioIndex = Math.floor(Math.random() * AUDIOS.length)
 
@@ -33,7 +42,6 @@ export class SenaSoundToggle extends LitElement {
 
   private playNext() {
     this.audioIndex = this.nextRandomIndex()
-    // 等 Lit 更新 src 后再播
     this.updateComplete.then(() => {
       this.bgmRef.load()
       this.palySound()
@@ -80,11 +88,17 @@ export class SenaSoundToggle extends LitElement {
   public override firstUpdated() {
     this.soundButtonRotate(0)
 
-    // 播完自动切下一首
     this.bgmRef.addEventListener('ended', () => this.playNext())
+    this.bgmRef.addEventListener(
+      'canplay',
+      () => {
+        SenaSoundToggle.preloadAudios(this.audioIndex)
+      },
+      { once: true }
+    )
 
     if (getStorageFiled(StorageKeys.SETTINGS_AUTOPLAY, DEFAULT_SETTINGS_AUTOPLAY)) {
-      this.palySound()
+      this.playNext()
       ;(['touchstart', 'click'] as const).map((eventName) =>
         document.addEventListener(eventName, () => {
           if (this.autoPlayFailed) this.palySound()
@@ -95,6 +109,3 @@ export class SenaSoundToggle extends LitElement {
     }
   }
 }
-
-
-
