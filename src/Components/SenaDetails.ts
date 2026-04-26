@@ -1,11 +1,10 @@
 import { html, LitElement } from 'lit'
-import { customElement, state } from 'lit/decorators.js'
+import { customElement } from 'lit/decorators.js'
 import I18n from '../utils/i18n.ts'
 
 @customElement('sena-details')
 export class SenaDetails extends LitElement {
-  @state()
-  private accessor details: [string, string, boolean][] = [
+  private readonly details: [string, string, boolean][] = [
     [I18n.t`details.line1.front`, I18n.t`details.line1.back`, false],
     [I18n.t`details.line2.front`, I18n.t`details.line2.back`, false],
     [I18n.t`details.line3.front`, I18n.t`details.line3.back`, false],
@@ -15,19 +14,20 @@ export class SenaDetails extends LitElement {
   private onMouseEnterFactory(index: number) {
     return () => {
       this.details[index][2] = true
+      this.requestUpdate()
     }
   }
 
   private onMouseLeaveFactory(index: number) {
     return () => {
       this.details[index][2] = false
+      this.requestUpdate()
     }
   }
 
-  // TODO: fix this
   public override render() {
     return html`
-      <link rel="stylesheet" href="/styles.css">
+      <link rel="stylesheet" href="./styles.css">
       <div class="details">
       ${this.details.map(
         ([front, back, isHovering], index) =>
@@ -39,6 +39,3 @@ export class SenaDetails extends LitElement {
     `
   }
 }
-
-
-

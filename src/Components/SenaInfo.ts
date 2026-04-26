@@ -4,7 +4,9 @@ import { REPO_URL } from '../constant.ts'
 import I18n from '../utils/i18n.ts'
 import './SenaTextBlock.ts'
 import { getViews } from '../http/index.ts'
+import { showCatchedError } from '../utils/error.ts'
 import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
+import { error } from '../utils/logger.ts'
 
 @customElement('sena-info')
 export class SenaInfo extends LitElement {
@@ -35,11 +37,14 @@ export class SenaInfo extends LitElement {
     SenaEventsEmmiter.on('loadedMessages', (messages) => {
       this.messagesCount = messages.length
     })
-    getViews().then((views) => {
-      this.views = views
-    })
+    getViews()
+      .then((views) => {
+        this.views = views
+      })
+      .catch((err) => {
+        const content = `Failed to get views: ${showCatchedError(err)}`
+        error(content)
+        SenaEventsEmmiter.emit('notify', content)
+      })
   }
 }
-
-
-

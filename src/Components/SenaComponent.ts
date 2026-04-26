@@ -5,6 +5,7 @@ import './SenaQuotes.ts'
 import './SenaDetails.ts'
 import './SenaAbout.ts'
 import './SenaMessages.ts'
+import './SenaLinks.ts'
 import './SenaInfo.ts'
 import './SenaSoundToggle.ts'
 import './SenaModal.ts'
@@ -22,6 +23,7 @@ export class SenaComponent extends LitElement {
         <sena-details></sena-details>
         <sena-about></sena-about>
         <sena-messages></sena-messages>
+        <sena-links></sena-links>
         <sena-info></sena-info>
       </div>
     </div>
@@ -31,6 +33,3 @@ export class SenaComponent extends LitElement {
     `
   }
 }
-
-
-

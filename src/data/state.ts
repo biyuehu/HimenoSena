@@ -10,14 +10,22 @@ let activeTime = 0
 
 function setActiveCounter() {
   const isVisited = getStorageFiled(StorageKeys.STATE_VISITED, false)
-  if (!isVisited && activeTime <= 10) {
+  if (isVisited) return
+  if (activeTime <= 10) {
     activeTime += 1
     betterTimeout(() => setActiveCounter(), 1000)
     return
   }
-  postView().then(() => {
-    if (!isVisited) setStorageFiled(StorageKeys.STATE_VISITED, true)
-  })
+  postView()
+    .then(() => {
+      console.log('View posted')
+      if (!isVisited) setStorageFiled(StorageKeys.STATE_VISITED, true)
+    })
+    .catch((err) => {
+      const content = `Failed to post view: ${showCatchedError(err)}`
+      error(content)
+      SenaEventsEmmiter.emit('notify', content)
+    })
 }
 
 function initializeMessages() {

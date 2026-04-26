@@ -1,9 +1,11 @@
+const COPYRIGHT = 'Copyright © 2025 - 2026 Himeno Sena.'
+
 export default {
   'messages.button': "I'll write too",
   'info.line1.phone': 'Visitors: {0} | Messages: {1}',
   'info.line1.pc': 'Total number of visitors: {0} | Number of messages: {1}',
-  'info.line2.phone': 'Copyright © 2025 Himeno Sena.',
-  'info.line2.pc': 'Copyright © 2025 Himeno Sena. All rights reserved.',
+  'info.line2.phone': COPYRIGHT,
+  'info.line2.pc': `${COPYRIGHT} All rights reserved.`,
   'info.line3': /* html */ ``,
   'details.line1.front': 'B:85 W:52 H:91',
   'details.line1.back': 'Measurements',
@@ -12,7 +14,7 @@ export default {
   'details.line3.front': '12 June',
   'details.line3.back': 'Birthday',
   'details.line4.front': 'Type A',
-  'details.line4.back': 'Blood Type',
+  'details.line4.back': 'Blood',
   'modal.title': 'Settings',
   'modal.placeholder1': 'Enter time in seconds',
   'modal.label1': 'Switch Time:',

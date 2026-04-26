@@ -1,34 +1,21 @@
 import type { Message } from '../types.ts'
-import { showCatchedError } from '../utils/error.ts'
-import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
-import { error } from '../utils/logger.ts'
 
-export async function getViews(): Promise<number> {
-  if (!('isPhpEnv' in globalThis)) return 0
-  return (
-    (
-      await fetch('./views.php').catch((err) => {
-        const content = `Failed to get views: ${showCatchedError(err)}`
-        error(content)
-        SenaEventsEmmiter.emit('notify', content)
-      })
-    )
-      ?.text()
-      .then((value) => {
-        const num = Number.parseInt(value, 10)
-        if (!Number.isNaN(num)) return num
-        throw new Error()
-      }) || 0
-  )
+const VIEW_API_URL = 'https://hotaru.icu/api/utils/view/himeno-sena'
+
+export function getViews(): Promise<number> {
+  if (!('HIMENO_SENA_BUILD_TIME' in globalThis)) return Promise.resolve(0)
+  return fetch(VIEW_API_URL)
+    .then((res) => res.text())
+    .then((value) => {
+      const num = Number.parseInt(value, 10)
+      if (!Number.isNaN(num)) return num
+      throw new Error()
+    })
 }
 
-export async function postView() {
-  if (!('isPhpEnv' in globalThis)) return
-  await fetch('./view.php', { method: 'POST' }).catch((err) => {
-    const content = `Failed to post view: ${showCatchedError(err)}`
-    error(content)
-    SenaEventsEmmiter.emit('notify', content)
-  })
+export function postView() {
+  if (!('HIMENO_SENA_BUILD_TIME' in globalThis)) return Promise.resolve()
+  return fetch(VIEW_API_URL, { method: 'POST' }) as unknown as Promise<void>
 }
 
 export function fetchMessageList(): Promise<Message[]> {
