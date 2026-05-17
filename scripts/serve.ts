@@ -8,7 +8,7 @@ const bundles = new Map([
 async function watchFiles() {
   let lastChanged = 0;
 
-  for await (const event of Deno.watchFs(["public", "src"])) {
+  for await (const event of Deno.watchFs(["data", "public", "src"])) {
     if (Date.now() - lastChanged < 500) continue;
     if (["modify", "create", "remove"].includes(event.kind)) {
       console.log(`File ${event.paths[0]} ${event.kind}`);
@@ -89,6 +89,9 @@ async function fetch(req: Request) {
   const bundleEntry = bundles.get(pathname);
   if (bundleEntry) {
     return await handleBundled(bundleEntry);
+  }
+  if (pathname.startsWith("/data/")) {
+    return handleStatic(pathname.slice(1));
   }
   return handleStatic(`public${pathname === "/" ? "/index.html" : pathname}`);
 }

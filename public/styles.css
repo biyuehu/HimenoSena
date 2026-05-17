@@ -290,6 +290,41 @@ a {
   padding: 0.15rem 0.55rem;
 }
 
+.blacklist-platform-bilibili {
+  background: rgba(251, 114, 153, 0.78);
+  border-color: rgba(255, 181, 201, 0.55);
+}
+
+.blacklist-platform-tieba {
+  background: rgba(45, 116, 255, 0.74);
+  border-color: rgba(144, 184, 255, 0.52);
+}
+
+.blacklist-platform-netease {
+  background: rgba(193, 18, 31, 0.78);
+  border-color: rgba(255, 149, 157, 0.5);
+}
+
+.blacklist-platform-weibo {
+  background: rgba(238, 164, 38, 0.82);
+  border-color: rgba(255, 219, 143, 0.52);
+}
+
+.blacklist-platform-github {
+  background: rgba(36, 41, 47, 0.82);
+  border-color: rgba(139, 148, 158, 0.55);
+}
+
+.blacklist-platform-twitter {
+  background: rgba(29, 155, 240, 0.76);
+  border-color: rgba(143, 205, 247, 0.55);
+}
+
+.blacklist-platform-discord {
+  background: rgba(88, 101, 242, 0.76);
+  border-color: rgba(172, 180, 255, 0.55);
+}
+
 .blacklist-summary {
   color: rgba(255, 255, 255, 0.92);
   font-size: 1rem;

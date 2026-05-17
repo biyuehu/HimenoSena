@@ -9,7 +9,7 @@ type BlacklistRecord = {
   summary: string;
 };
 
-const DATA_URL = "./blacklist.json";
+const DATA_URL = "./data/blacklist.json";
 
 export class BlacklistComponent extends LitElement {
   @state()
@@ -49,6 +49,25 @@ export class BlacklistComponent extends LitElement {
     this.keyword = (event.target as HTMLInputElement).value;
   }
 
+  private static getPlatformClass(platform: string) {
+    const normalized = platform.trim().toLowerCase();
+    const classMap = [
+      [["bilibili", "b站", "哔哩哔哩", "哔哩哔哩动画"], "bilibili"],
+      [["百度贴吧", "tieba", "baidu tieba"], "tieba"],
+      [["网易云音乐", "netease cloud music", "cloudmusic"], "netease"],
+      [["微博", "weibo"], "weibo"],
+      [["github"], "github"],
+      [["twitter", "x"], "twitter"],
+      [["discord"], "discord"],
+    ] as const;
+
+    const matched = classMap.find(([names]) =>
+      names.some((name) => normalized === name)
+    );
+
+    return matched ? `blacklist-platform-${matched[1]}` : "";
+  }
+
   private renderContent() {
     if (this.loading) {
       return html`
@@ -76,8 +95,12 @@ export class BlacklistComponent extends LitElement {
             <div class="blacklist-item-header">
               <h2 class="blacklist-name">${record.name || "未命名"}</h2>
               <div class="blacklist-meta">
-                <span class="blacklist-platform">${record.platform ||
-                  "未知平台"}</span>
+                <span
+                  class="blacklist-platform ${BlacklistComponent
+                    .getPlatformClass(record.platform)}"
+                >
+                  ${record.platform || "未知平台"}
+                </span>
                 <span>${record.id || "无 ID"}</span>
               </div>
             </div>

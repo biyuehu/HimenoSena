@@ -1,0 +1,32 @@
+[
+  {
+    "platform": "Bilibili",
+    "id": "100001",
+    "summary": "多次发布无关刷屏内容，影响评论区正常交流。",
+    "name": "十月的落星"
+  },
+  {
+    "platform": "Bilibili",
+    "id": "2",
+    "summary": "虚拟测试数据，用于验证哔哩哔哩用户名自动补全。",
+    "name": "碧诗"
+  },
+  {
+    "platform": "百度贴吧",
+    "id": "tieba-demo-user",
+    "summary": "违反吧规发布重复广告内容。",
+    "name": ""
+  },
+  {
+    "platform": "网易云音乐",
+    "id": "cloudmusic-demo-user",
+    "summary": "持续在评论区发布骚扰内容。",
+    "name": ""
+  },
+  {
+    "platform": "GitHub",
+    "id": "blocked-example",
+    "summary": "在 issue 中提交无关内容并重复 ping 维护者。",
+    "name": ""
+  }
+]

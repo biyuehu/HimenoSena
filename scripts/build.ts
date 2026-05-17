@@ -26,6 +26,7 @@ safe(() => Deno.removeSync(DEST_DIR, { recursive: true }));
 safe(() => Deno.mkdirSync(DEST_DIR, { recursive: true }));
 
 copyFile(PUBLIC_DIR, DEST_DIR);
+copyFile("data", `${DEST_DIR}/data`);
 
 const HIMENO_SENA_BUILD_TIME = new Date().toLocaleString();
 
