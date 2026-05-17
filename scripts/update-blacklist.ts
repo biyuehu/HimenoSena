@@ -11,16 +11,15 @@ type BlacklistRecord = RawBlacklistRecord & {
 const RAW_BLACKLIST_PATH = "data/blacklist.raw.json";
 const BLACKLIST_PATH = "data/blacklist.json";
 
-const isBilibili = (platform: string) => {
-  const normalized = platform.trim().toLowerCase();
-  return ["bilibili", "b站", "哔哩哔哩", "哔哩哔哩动画"].includes(normalized);
-};
+const isBilibili = (platform: string) =>  ["bilibili", "b站", "哔哩哔哩", "哔哩哔哩动画"].includes(platform.trim().toLowerCase());
 
 export const getBiliUsername = async (uid: number | string) => {
   const res = await fetch(`https://space.bilibili.com/${uid}`, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0.0.0 Safari/537.36",
+      'Referer': 'https://www.bilibili.com/',
+      'Origin': 'https://www.bilibili.com'
     },
   });
 
@@ -28,8 +27,7 @@ export const getBiliUsername = async (uid: number | string) => {
     throw new Error(`Failed to fetch Bilibili user ${uid}: HTTP ${res.status}`);
   }
 
-  const html = await res.text();
-  const match = html.match(/<title>(.*?)的个人空间/);
+  const match = (await res.text()).match(/<title>(.*?)的个人空间/);
 
   if (!match?.[1]) {
     throw new Error(`Bilibili user ${uid} not found`);
