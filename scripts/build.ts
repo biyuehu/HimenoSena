@@ -1,27 +1,33 @@
-import { render } from '@lit-labs/ssr'
-import { collectResultSync } from '@lit-labs/ssr/lib/render-result.js'
-import { html } from 'lit'
-import { customElement } from 'lit/decorators.js'
-import { SenaComponent } from '../src/Components/SenaComponent.ts'
-import { copyFile, safe } from './utils.ts'
+import { render } from "@lit-labs/ssr";
+import { collectResultSync } from "@lit-labs/ssr/lib/render-result.js";
+import { html } from "lit";
+import { customElement } from "lit/decorators.js";
+import { BlacklistComponent } from "../src/Components/BlacklistComponent.ts";
+import { SenaComponent } from "../src/Components/SenaComponent.ts";
+import { copyFile, safe } from "./utils.ts";
 
-const [PUBLIC_DIR, DEST_DIR] = /* Deno.args */ ['public', 'build']
+const [PUBLIC_DIR, DEST_DIR] = /* Deno.args */ ["public", "build"];
 
 if (!PUBLIC_DIR || !DEST_DIR) {
-  console.error('Usage: build.ts <public_dir> <dest_dir>')
-  Deno.exit(1)
+  console.error("Usage: build.ts <public_dir> <dest_dir>");
+  Deno.exit(1);
 }
 
-await new Deno.Command(Deno.execPath(), {
-  args: ['check']
-})
+const check = await new Deno.Command(Deno.execPath(), {
+  args: ["check"],
+}).output();
 
-safe(() => Deno.removeSync(DEST_DIR, { recursive: true }))
-safe(() => Deno.mkdirSync(DEST_DIR, { recursive: true }))
+if (!check.success) {
+  console.error(new TextDecoder().decode(check.stderr));
+  Deno.exit(check.code);
+}
 
-copyFile(PUBLIC_DIR, DEST_DIR)
+safe(() => Deno.removeSync(DEST_DIR, { recursive: true }));
+safe(() => Deno.mkdirSync(DEST_DIR, { recursive: true }));
 
-const HIMENO_SENA_BUILD_TIME = new Date().toLocaleString()
+copyFile(PUBLIC_DIR, DEST_DIR);
+
+const HIMENO_SENA_BUILD_TIME = new Date().toLocaleString();
 
 const [indexComment, jsAndCssComment] = ((time) =>
   [
@@ -31,31 +37,74 @@ const [indexComment, jsAndCssComment] = ((time) =>
  * @project https://github.com/biyuehu/HimenoSena
  * @license SENA WITH GPL-3.0
  * @build ${time}
- */`
-  ] as const)(HIMENO_SENA_BUILD_TIME)
+ */`,
+  ] as const)(HIMENO_SENA_BUILD_TIME);
 
-await new Deno.Command(Deno.execPath(), {
-  args: ['bundle', '--platform', 'browser', '--minify', '--output', `${DEST_DIR}/bundle.js`, 'src/main.ts']
-})
-  .spawn()
-  .output()
+customElement("sena-component")(SenaComponent);
+customElement("blacklist-component")(BlacklistComponent);
 
-customElement('sena-component')(SenaComponent)
+const pages = [
+  {
+    html: "index.html",
+    bundle: "bundle.js",
+    entry: "src/main.ts",
+    placeholder: "<sena-component></sena-component>",
+    ssr: () =>
+      collectResultSync(render(html`
+        <sena-component></sena-component>
+      `)),
+  },
+  {
+    html: "blacklist.html",
+    bundle: "blacklist.bundle.js",
+    entry: "src/blacklist.ts",
+    placeholder: "<blacklist-component></blacklist-component>",
+    ssr: () =>
+      collectResultSync(render(html`
+        <blacklist-component></blacklist-component>
+      `)),
+  },
+] as const;
 
-Deno.writeTextFileSync(
-  `${DEST_DIR}/index.html`,
-  /* html */ `${indexComment}${Deno.readTextFileSync(`${PUBLIC_DIR}/index.html`).replace(
-    '<sena-component></sena-component>',
-    collectResultSync(render(html`<sena-component></sena-component>`))
-  )}`
-)
-Deno.writeTextFileSync(
-  `${DEST_DIR}/bundle.js`,
-  `${jsAndCssComment}\n\nglobalThis.HIMENO_SENA_BUILD_TIME = ${JSON.stringify(HIMENO_SENA_BUILD_TIME)};\n${Deno.readTextFileSync(`${DEST_DIR}/bundle.js`)}`
-)
+for (const page of pages) {
+  const bundle = await new Deno.Command(Deno.execPath(), {
+    args: [
+      "bundle",
+      "--platform",
+      "browser",
+      "--minify",
+      "--output",
+      `${DEST_DIR}/${page.bundle}`,
+      page.entry,
+    ],
+  }).output();
+
+  if (!bundle.success) {
+    console.error(new TextDecoder().decode(bundle.stderr));
+    Deno.exit(bundle.code);
+  }
+
+  Deno.writeTextFileSync(
+    `${DEST_DIR}/${page.html}`,
+    `${indexComment}${
+      Deno.readTextFileSync(`${PUBLIC_DIR}/${page.html}`).replace(
+        page.placeholder,
+        page.ssr(),
+      )
+    }`,
+  );
+
+  Deno.writeTextFileSync(
+    `${DEST_DIR}/${page.bundle}`,
+    `${jsAndCssComment}\n\nglobalThis.HIMENO_SENA_BUILD_TIME = ${
+      JSON.stringify(HIMENO_SENA_BUILD_TIME)
+    };\n${Deno.readTextFileSync(`${DEST_DIR}/${page.bundle}`)}`,
+  );
+}
+
 Deno.writeTextFileSync(
   `${DEST_DIR}/styles.css`,
-  `${jsAndCssComment}\n\n${Deno.readTextFileSync(`${DEST_DIR}/styles.css`)}`
-)
+  `${jsAndCssComment}\n\n${Deno.readTextFileSync(`${DEST_DIR}/styles.css`)}`,
+);
 
-console.log('Build complete.')
+console.log("Build complete.");

@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Noto Sans JP', serif;
+  font-family: "Noto Sans JP", serif;
   background: #eee;
   color: #fff;
   overflow-x: hidden;
@@ -72,22 +72,21 @@ a {
   will-change: transform, opacity;
 }
 
-
 /* SenaTitle */
 .title {
   text-align: center;
   margin: 2rem 0 0rem 0;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
 }
 
-.title>*:first-child {
+.title > *:first-child {
   font-size: 4.5rem;
   letter-spacing: 0.05em;
   font-style: italic;
 }
 
-.title>*:last-child {
+.title > *:last-child {
   font-size: 1.5rem;
 }
 
@@ -115,7 +114,7 @@ a {
   justify-content: center;
 }
 
-.details>div {
+.details > div {
   text-align: center;
   background: rgba(0, 0, 0, 0.2);
   padding: 1rem 2rem;
@@ -124,23 +123,23 @@ a {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
-.details>div:hover {
+.details > div:hover {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-.details>:nth-child(1) {
+.details > :nth-child(1) {
   width: 180px;
 }
 
-.details>:nth-child(2) {
+.details > :nth-child(2) {
   width: 170px;
 }
 
-.details>:nth-child(3) {
+.details > :nth-child(3) {
   width: 130px;
 }
 
-.details>:nth-child(4) {
+.details > :nth-child(4) {
   width: 145px;
 }
 
@@ -160,16 +159,152 @@ a {
   box-shadow: 0 8px 18px rgba(255, 255, 255, 0.3);
 }
 
-.text-block>h2 {
+.text-block > h2 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   border-bottom: 2px solid rgba(44, 62, 80, 0.2);
   padding-bottom: 0.5rem;
 }
 
-.text-block>div {
+.text-block > div {
   font-size: 1.1rem;
   text-align: justify;
+}
+
+/* Blacklist */
+.blacklist-page {
+  position: relative;
+  padding: 2rem;
+  width: 1024px;
+  max-width: 98vw;
+  margin: 0 auto;
+}
+
+.blacklist-title {
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.blacklist-title h1 {
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.blacklist-title p {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: #333;
+  text-shadow: none;
+}
+
+.blacklist-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.blacklist-toolbar input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  background: rgba(51, 51, 51, 0.88);
+  color: #fff;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+  outline: none;
+}
+
+.blacklist-toolbar input::placeholder {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.blacklist-count {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.blacklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  user-select: text;
+}
+
+.blacklist-item {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.2rem 1.4rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.blacklist-item:hover {
+  box-shadow: 0 8px 18px rgba(255, 255, 255, 0.3);
+}
+
+.blacklist-item-header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+  border-bottom: 2px solid rgba(44, 62, 80, 0.2);
+  padding-bottom: 0.55rem;
+}
+
+.blacklist-name {
+  min-width: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.blacklist-meta {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.5rem;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.blacklist-platform {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(51, 51, 51, 0.72);
+  padding: 0.15rem 0.55rem;
+}
+
+.blacklist-summary {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.blacklist-message {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* SenaMessages */
@@ -184,7 +319,6 @@ a {
 /* SenaSoundToggle */
 #sound-toggle {
   right: 1rem;
-
 }
 
 #sound-toggle:hover {
@@ -275,13 +409,32 @@ a {
     padding: 1.5rem;
   }
 
-  .text-block>div {
+  .text-block > div {
     word-break: break-all;
     font-size: 0.9rem;
   }
 
   .content {
     gap: 2rem;
+  }
+
+  .blacklist-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .blacklist-title h1 {
+    font-size: 2.6rem;
+  }
+
+  .blacklist-toolbar,
+  .blacklist-item-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .blacklist-meta {
+    flex-wrap: wrap;
+    white-space: normal;
   }
 }
 
