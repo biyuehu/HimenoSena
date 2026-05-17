@@ -1,0 +1,32 @@
+[
+  {
+    "platform": "Bilibili",
+    "id": "100001",
+    "name": "测试用户A",
+    "summary": "多次发布无关刷屏内容，影响评论区正常交流。"
+  },
+  {
+    "platform": "Twitter",
+    "id": "@sample_blocked",
+    "name": "Sample Blocked",
+    "summary": "持续发送骚扰私信，并在公开回复中重复引战。"
+  },
+  {
+    "platform": "Discord",
+    "id": "demo_user#1234",
+    "name": "DemoUser",
+    "summary": "违反频道规则，重复发布广告链接。"
+  },
+  {
+    "platform": "Weibo",
+    "id": "9876543210",
+    "name": "虚拟名单用户",
+    "summary": "冒充他人身份发布误导信息，已记录为测试数据。"
+  },
+  {
+    "platform": "GitHub",
+    "id": "blocked-example",
+    "name": "blocked-example",
+    "summary": "在 issue 中提交无关内容并重复 ping 维护者。"
+  }
+]
