@@ -9,39 +9,31 @@ type BlacklistRecord = {
   summary: string
 }
 
-const DATA_URL = './data/blacklist.json'
-const PLATFORM_META = {
-  bilibili: {
-    label: '哔哩哔哩',
-    className: 'blacklist-platform-bilibili'
-  },
-  tieba: {
-    label: '百度贴吧',
-    className: 'blacklist-platform-tieba'
-  },
-  neteaseMusic: {
-    label: '网易云音乐',
-    className: 'blacklist-platform-netease'
-  },
-  weibo: {
-    label: '微博',
-    className: 'blacklist-platform-weibo'
-  },
-  github: {
-    label: 'GitHub',
-    className: 'blacklist-platform-github'
-  },
-  twitter: {
-    label: 'Twitter / X',
-    className: 'blacklist-platform-twitter'
-  },
-  discord: {
-    label: 'Discord',
-    className: 'blacklist-platform-discord'
-  }
-} as const
-
 export class BlacklistComponent extends LitElement {
+  private static readonly DATA_URL = './data/blacklist.json'
+
+  private static readonly PLATFORM_META = {
+    bilibili: '哔哩哔哩',
+    tieba: '百度贴吧',
+    netease: '网易云音乐',
+    github: 'GitHub',
+    twitter: 'Twitter / X',
+    discord: 'Discord'
+  } as const
+
+  private static normalizeRecord(record: Partial<BlacklistRecord> | null | undefined): BlacklistRecord {
+    return {
+      platform: String(record?.platform ?? '').trim(),
+      id: String(record?.id ?? '').trim(),
+      name: String(record?.name ?? '').trim(),
+      summary: String(record?.summary ?? '').trim()
+    }
+  }
+
+  private static getPlatformLabel(platform: string) {
+    return BlacklistComponent.PLATFORM_META[platform.trim() as keyof typeof BlacklistComponent.PLATFORM_META]
+  }
+
   @state()
   private accessor records: BlacklistRecord[] = []
 
@@ -67,29 +59,8 @@ export class BlacklistComponent extends LitElement {
     )
   }
 
-  private static normalizeRecord(record: Partial<BlacklistRecord> | null | undefined): BlacklistRecord {
-    return {
-      platform: String(record?.platform ?? '').trim(),
-      id: String(record?.id ?? '').trim(),
-      name: String(record?.name ?? '').trim(),
-      summary: String(record?.summary ?? '').trim()
-    }
-  }
-
   private handleSearch(event: Event) {
     this.keyword = (event.target as HTMLInputElement).value
-  }
-
-  private static getPlatformMeta(platform: string) {
-    return PLATFORM_META[platform.trim() as keyof typeof PLATFORM_META]
-  }
-
-  private static getPlatformLabel(platform: string) {
-    return BlacklistComponent.getPlatformMeta(platform)?.label ?? (platform.trim() || '未知平台')
-  }
-
-  private static getPlatformClass(platform: string) {
-    return BlacklistComponent.getPlatformMeta(platform)?.className ?? ''
   }
 
   private renderContent() {
@@ -101,7 +72,7 @@ export class BlacklistComponent extends LitElement {
 
     if (this.errorMessage) {
       return html`
-        <div class="blacklist-message">无法读取 ${DATA_URL}：${this.errorMessage}</div>
+        <div class="blacklist-message">无法读取 ${BlacklistComponent.DATA_URL}：${this.errorMessage}</div>
       `
     }
 
@@ -119,7 +90,7 @@ export class BlacklistComponent extends LitElement {
               <h2 class="blacklist-name">${record.name || '未命名'}</h2>
               <div class="blacklist-meta">
                 <span
-                  class="blacklist-platform ${BlacklistComponent.getPlatformClass(record.platform)}"
+                  class="blacklist-platform blacklist-platform-${record.platform}"
                 >
                   ${BlacklistComponent.getPlatformLabel(record.platform)}
                 </span>
@@ -166,7 +137,7 @@ export class BlacklistComponent extends LitElement {
     super.connectedCallback()
 
     try {
-      const response = await fetch(DATA_URL, { cache: 'no-store' })
+      const response = await fetch(BlacklistComponent.DATA_URL, { cache: 'no-store' })
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
