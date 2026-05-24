@@ -22,7 +22,7 @@ jobs:
           deno-version: v2.x
 
       - name: Update blacklist names
-        run: deno task update:blacklist
+        run: deno task black
 
       - name: Commit updated blacklist
         run: |

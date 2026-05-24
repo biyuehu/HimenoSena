@@ -33,7 +33,7 @@ jobs:
           jq empty data/blacklist.json
 
       - name: Check blacklist generator
-        run: deno task update:blacklist
+        run: deno task black
 
       - name: Close PR and comment
         if: failure()
