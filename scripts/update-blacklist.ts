@@ -11,11 +11,10 @@ type BlacklistRecord = RawBlacklistRecord & {
 const RAW_BLACKLIST_PATH = 'data/blacklist.raw.json'
 const BLACKLIST_PATH = 'data/blacklist.json'
 
-const isBilibili = (platform: string) =>
-  ['bilibili', 'b站', '哔哩哔哩', '哔哩哔哩动画'].includes(platform.trim().toLowerCase())
+const isBilibili = (platform: string) => platform.trim() === 'bilibili'
 
 export const getBiliUsername = async (uid: number | string) => {
-  const res = await fetch(`https://space.bilibili.com/${uid}`, {
+  const res = await fetch(`https://hotaru.icu/api/utils/agent?url=https://space.bilibili.com/${uid}`, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0.0.0 Safari/537.36',
       Referer: 'https://www.bilibili.com/',

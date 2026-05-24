@@ -4,7 +4,7 @@
   "tasks": {
     "dev": "deno serve --host 0.0.0.0 --port 612 --allow-net --allow-read --allow-write --allow-run scripts/serve.ts",
     "build": "deno run --allow-read --allow-write --allow-run scripts/build.ts",
-    "update:blacklist": "deno run --allow-read --allow-write --allow-net scripts/update-blacklist.ts"
+    "black": "deno run --allow-read --allow-write --allow-net scripts/update-blacklist.ts"
   },
   "imports": {
     "@biomejs/biome": "npm:@biomejs/biome@^2.4.12",
