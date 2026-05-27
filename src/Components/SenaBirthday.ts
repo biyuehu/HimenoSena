@@ -26,10 +26,7 @@ export class SenaBirthday extends LitElement {
       <link rel="stylesheet" href="./styles.css">
       <div class="birthday-layer" aria-hidden="true">
         <div class="birthday-glow"></div>
-        ${this.petals.map(
-          (index) =>
-            html`<span class="birthday-petal" style=${this.getPetalStyle(index)}></span>`
-        )}
+        ${this.petals.map((index) => html`<span class="birthday-petal" style=${this.getPetalStyle(index)}></span>`)}
       </div>
       <div class="birthday-note">
         <div>Happy Birthday</div>
@@ -44,7 +41,7 @@ export class SenaBirthday extends LitElement {
     if (!this.isBirthday || typeof document === 'undefined') return
     this.previousTitle = document.title
     document.documentElement.classList.add('birthday-mode')
-    document.title = 'Happy Birthday, Himeno Sena'
+    document.title = 'Happy Birthday, Himeno Sena!'
   }
 
   public override disconnectedCallback() {

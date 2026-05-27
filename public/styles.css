@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *::selection {
@@ -14,15 +15,8 @@
   --sena-birthday-color-soft: rgba(232, 172, 150, 0.34);
 }
 
-html.birthday-mode *::selection {
-  background-color: rgba(232, 172, 150, 0.42);
-}
 
-html.birthday-mode body {
-  background: #f1e6e2;
-}
-
-body {
+html {
   font-family: "Noto Sans JP", serif;
   background: #eee;
   color: #fff;
@@ -31,6 +25,17 @@ body {
   line-height: 1.5;
   user-select: none;
 }
+
+html.birthday-mode *::selection {
+  background-color: rgba(232, 172, 150, 0.42);
+  color: rgb(232, 172, 150);
+
+}
+
+html.birthday-mode body {
+  background: #f1e6e2;
+}
+
 
 a {
   color: #fff;
@@ -42,6 +47,7 @@ a {
 
 .fixed-button-common {
   position: fixed;
+  z-index: 24;
   top: 1rem;
   width: 40px;
   height: 40px;
@@ -93,24 +99,24 @@ a {
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
 }
 
-.title > *:first-child {
+.title>*:first-child {
   font-size: 4.5rem;
   letter-spacing: 0.05em;
   font-style: italic;
 }
 
-.title > *:last-child {
+.title>*:last-child {
   font-size: 1.5rem;
 }
 
-.birthday-title > *:first-child {
+.birthday-title>*:first-child {
   color: var(--sena-birthday-color);
   text-shadow:
     0 0 10px rgba(232, 172, 150, 0.5),
     2px 2px 4px rgba(0, 0, 0, 0.28);
 }
 
-.birthday-title > *:last-child {
+.birthday-title>*:last-child {
   color: var(--sena-birthday-color);
   font-weight: 600;
   text-shadow:
@@ -166,9 +172,9 @@ a {
   inset: -20vh -10vw auto;
   height: 48vh;
   background:
-    radial-gradient(circle at 32% 24%, rgba(255, 229, 205, 0.36), transparent 24%),
-    radial-gradient(circle at 68% 16%, rgba(232, 172, 150, 0.34), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
+    radial-gradient(circle at 32% 24%, rgba(255, 229, 205, 0.56), transparent 24%),
+    radial-gradient(circle at 68% 16%, rgba(232, 172, 150, 0.94), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent);
   filter: blur(2px);
 }
 
@@ -281,7 +287,7 @@ a {
   justify-content: center;
 }
 
-.details > div {
+.details>div {
   text-align: center;
   background: rgba(0, 0, 0, 0.2);
   padding: 1rem 2rem;
@@ -290,23 +296,23 @@ a {
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
-.details > div:hover {
+.details>div:hover {
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-.details > :nth-child(1) {
+.details> :nth-child(1) {
   width: 180px;
 }
 
-.details > :nth-child(2) {
+.details> :nth-child(2) {
   width: 170px;
 }
 
-.details > :nth-child(3) {
+.details> :nth-child(3) {
   width: 130px;
 }
 
-.details > :nth-child(4) {
+.details> :nth-child(4) {
   width: 145px;
 }
 
@@ -326,14 +332,14 @@ a {
   box-shadow: 0 8px 18px rgba(255, 255, 255, 0.3);
 }
 
-.text-block > h2 {
+.text-block>h2 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   border-bottom: 2px solid rgba(44, 62, 80, 0.2);
   padding-bottom: 0.5rem;
 }
 
-.text-block > div {
+.text-block>div {
   font-size: 1.1rem;
   text-align: justify;
 }
@@ -611,7 +617,7 @@ a {
     padding: 1.5rem;
   }
 
-  .text-block > div {
+  .text-block>div {
     word-break: break-all;
     font-size: 0.9rem;
   }
