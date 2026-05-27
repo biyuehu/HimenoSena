@@ -106,6 +106,110 @@ a {
   opacity: 1;
 }
 
+/* SenaBirthday */
+.birthday-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.birthday-glow {
+  position: absolute;
+  inset: -20vh -10vw auto;
+  height: 48vh;
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 230, 174, 0.28), transparent 24%),
+    radial-gradient(circle at 68% 16%, rgba(255, 172, 202, 0.24), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
+  filter: blur(2px);
+}
+
+.birthday-light {
+  position: absolute;
+  top: -18px;
+  left: var(--birthday-left);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 244, 208, 0.9);
+  box-shadow: 0 0 12px rgba(255, 244, 208, 0.8);
+  animation: birthday-float 11s linear infinite;
+  animation-delay: var(--birthday-delay);
+}
+
+.birthday-light:nth-child(3n) {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 196, 216, 0.88);
+  box-shadow: 0 0 10px rgba(255, 196, 216, 0.76);
+}
+
+.birthday-light:nth-child(4n) {
+  width: 8px;
+  height: 8px;
+  background: rgba(226, 238, 255, 0.86);
+  box-shadow: 0 0 14px rgba(226, 238, 255, 0.78);
+}
+
+.birthday-note {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 12;
+  width: 260px;
+  max-width: calc(100vw - 2rem);
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.24);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.72);
+}
+
+.birthday-note div {
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.birthday-note strong {
+  display: block;
+  margin-top: 0.1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.birthday-note span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@keyframes birthday-float {
+  0% {
+    transform: translate3d(0, -10vh, 0) scale(0.65);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate3d(var(--birthday-drift), 112vh, 0) scale(1);
+    opacity: 0;
+  }
+}
+
 /* SenaDetails */
 .details {
   display: flex;
@@ -451,6 +555,17 @@ a {
 
   .content {
     gap: 2rem;
+  }
+
+  .birthday-note {
+    right: 1rem;
+    bottom: 0.8rem;
+    width: 230px;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .birthday-note strong {
+    font-size: 1.25rem;
   }
 
   .blacklist-page {
