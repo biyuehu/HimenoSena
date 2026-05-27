@@ -41,7 +41,7 @@ export class SenaTitle extends LitElement {
       <div>${this.unique}</div>
       <div>${
         this.isBirthday
-          ? 'Happy Birthday, Sena.'
+          ? '6.12! Happy Birthday, Sena!'
           : I18n.f`title.day`(
               daysSince(getStorageFiled(StorageKeys.SETTINGS_START_DATE, DEFAULT_SETTINGS_START_DATE)) ?? 1
             )
@@ -54,6 +54,3 @@ export class SenaTitle extends LitElement {
     SenaEventsEmmiter.on('adaptTextColor', (isBrightBackground) => this.adaptTextColor(isBrightBackground))
   }
 }
-
-
-
