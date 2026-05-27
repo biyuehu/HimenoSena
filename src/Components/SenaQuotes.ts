@@ -7,7 +7,9 @@ import { sleep } from '../utils/timer.ts'
 
 @customElement('sena-quotes')
 export class SenaQuotes extends LitElement {
-  private readonly quotes = isHimenoSenaBirthday() ? BIRTHDAY_QUOTES_LIST : QUOTES_LIST
+  private readonly isBirthday = isHimenoSenaBirthday()
+
+  private readonly quotes = this.isBirthday ? BIRTHDAY_QUOTES_LIST : QUOTES_LIST
 
   private getQuote(): [string, string?] {
     const prevQuote = this.currentQuote
@@ -51,7 +53,7 @@ export class SenaQuotes extends LitElement {
   public override render() {
     return html`
       <link rel="stylesheet" href="./styles.css">
-      <div class="quote dark-color ${
+      <div class="quote dark-color ${this.isBirthday ? 'birthday-quote' : ''} ${
         this.currentQuote !== void 0 ? 'visible' : ''
       }" @mouseenter=${this.onMouseEnter} @mouseleave=${this.onMouseLeave}>
           ${this.currentQuote?.[this.index]}

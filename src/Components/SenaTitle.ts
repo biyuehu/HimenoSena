@@ -37,7 +37,7 @@ export class SenaTitle extends LitElement {
   public override render() {
     return html`
     <link rel="stylesheet" href="./styles.css">
-    <div class="title dark-color">
+    <div class="title dark-color ${this.isBirthday ? 'birthday-title' : ''}">
       <div>${this.unique}</div>
       <div>${
         this.isBirthday

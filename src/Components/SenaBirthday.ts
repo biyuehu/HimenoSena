@@ -7,12 +7,16 @@ import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
 export class SenaBirthday extends LitElement {
   private readonly isBirthday = isHimenoSenaBirthday()
 
-  private readonly lights = Array.from({ length: 18 }, (_, index) => index)
+  private previousTitle = ''
 
-  private getLightStyle(index: number) {
-    const left = (index * 47 + 11) % 100
-    const drift = ((index % 5) - 2) * 24
-    return `--birthday-left: ${left}vw; --birthday-drift: ${drift}px; --birthday-delay: -${index * 0.42}s`
+  private readonly petals = Array.from({ length: 34 }, (_, index) => index)
+
+  private getPetalStyle(index: number) {
+    const left = (index * 37 + 9) % 100
+    const drift = ((index % 7) - 3) * 34
+    const size = 9 + (index % 4) * 2
+    const duration = 9 + (index % 6) * 1.2
+    return `--birthday-left: ${left}vw; --birthday-drift: ${drift}px; --birthday-size: ${size}px; --birthday-duration: ${duration}s; --birthday-delay: -${index * 0.36}s`
   }
 
   public override render() {
@@ -22,9 +26,9 @@ export class SenaBirthday extends LitElement {
       <link rel="stylesheet" href="./styles.css">
       <div class="birthday-layer" aria-hidden="true">
         <div class="birthday-glow"></div>
-        ${this.lights.map(
+        ${this.petals.map(
           (index) =>
-            html`<span class="birthday-light" style=${this.getLightStyle(index)}></span>`
+            html`<span class="birthday-petal" style=${this.getPetalStyle(index)}></span>`
         )}
       </div>
       <div class="birthday-note">
@@ -33,6 +37,21 @@ export class SenaBirthday extends LitElement {
         <span>星の音が、今日だけ少し近くに聞こえる。</span>
       </div>
     `
+  }
+
+  public override connectedCallback() {
+    super.connectedCallback()
+    if (!this.isBirthday || typeof document === 'undefined') return
+    this.previousTitle = document.title
+    document.documentElement.classList.add('birthday-mode')
+    document.title = 'Happy Birthday, Himeno Sena'
+  }
+
+  public override disconnectedCallback() {
+    super.disconnectedCallback()
+    if (!this.isBirthday || typeof document === 'undefined') return
+    document.documentElement.classList.remove('birthday-mode')
+    document.title = this.previousTitle
   }
 
   public override firstUpdated() {

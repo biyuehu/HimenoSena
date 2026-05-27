@@ -9,6 +9,19 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+:root {
+  --sena-birthday-color: #e8ac96;
+  --sena-birthday-color-soft: rgba(232, 172, 150, 0.34);
+}
+
+html.birthday-mode *::selection {
+  background-color: rgba(232, 172, 150, 0.42);
+}
+
+html.birthday-mode body {
+  background: #f1e6e2;
+}
+
 body {
   font-family: "Noto Sans JP", serif;
   background: #eee;
@@ -90,6 +103,21 @@ a {
   font-size: 1.5rem;
 }
 
+.birthday-title > *:first-child {
+  color: var(--sena-birthday-color);
+  text-shadow:
+    0 0 10px rgba(232, 172, 150, 0.5),
+    2px 2px 4px rgba(0, 0, 0, 0.28);
+}
+
+.birthday-title > *:last-child {
+  color: var(--sena-birthday-color);
+  font-weight: 600;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    1px 1px 2px rgba(0, 0, 0, 0.45);
+}
+
 /* SenaQuotes */
 .quote {
   font-size: 1.3rem;
@@ -106,7 +134,25 @@ a {
   opacity: 1;
 }
 
+.birthday-quote {
+  color: #fff5f1;
+  text-shadow:
+    0 0 10px rgba(232, 172, 150, 0.72),
+    1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.birthday-quote.dark-color {
+  color: #7a4634;
+  text-shadow:
+    0 0 9px rgba(255, 255, 255, 0.7),
+    1px 1px 2px rgba(255, 255, 255, 0.48);
+}
+
 /* SenaBirthday */
+:host {
+  display: block;
+}
+
 .birthday-layer {
   position: fixed;
   inset: 0;
@@ -120,37 +166,44 @@ a {
   inset: -20vh -10vw auto;
   height: 48vh;
   background:
-    radial-gradient(circle at 32% 24%, rgba(255, 230, 174, 0.28), transparent 24%),
-    radial-gradient(circle at 68% 16%, rgba(255, 172, 202, 0.24), transparent 28%),
+    radial-gradient(circle at 32% 24%, rgba(255, 229, 205, 0.36), transparent 24%),
+    radial-gradient(circle at 68% 16%, rgba(232, 172, 150, 0.34), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
   filter: blur(2px);
 }
 
-.birthday-light {
+.birthday-petal {
   position: absolute;
-  top: -18px;
+  top: -28px;
   left: var(--birthday-left);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 244, 208, 0.9);
-  box-shadow: 0 0 12px rgba(255, 244, 208, 0.8);
-  animation: birthday-float 11s linear infinite;
+  width: var(--birthday-size);
+  height: calc(var(--birthday-size) * 0.72);
+  border-radius: 100% 0 100% 0;
+  background: rgba(232, 172, 150, 0.88);
+  box-shadow:
+    0 0 10px rgba(232, 172, 150, 0.62),
+    inset 0 0 4px rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  animation: birthday-petal-fall var(--birthday-duration) linear infinite;
   animation-delay: var(--birthday-delay);
 }
 
-.birthday-light:nth-child(3n) {
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 196, 216, 0.88);
-  box-shadow: 0 0 10px rgba(255, 196, 216, 0.76);
+.birthday-petal:nth-child(3n) {
+  background: rgba(255, 218, 207, 0.9);
+  box-shadow:
+    0 0 10px rgba(255, 218, 207, 0.68),
+    inset 0 0 4px rgba(255, 255, 255, 0.48);
 }
 
-.birthday-light:nth-child(4n) {
-  width: 8px;
-  height: 8px;
-  background: rgba(226, 238, 255, 0.86);
-  box-shadow: 0 0 14px rgba(226, 238, 255, 0.78);
+.birthday-petal:nth-child(4n) {
+  background: rgba(255, 246, 233, 0.86);
+  box-shadow:
+    0 0 12px rgba(255, 246, 233, 0.68),
+    inset 0 0 4px rgba(232, 172, 150, 0.42);
+}
+
+.birthday-petal:nth-child(5n) {
+  filter: blur(0.4px);
 }
 
 .birthday-note {
@@ -161,11 +214,15 @@ a {
   width: 260px;
   max-width: calc(100vw - 2rem);
   padding: 0.85rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(232, 172, 150, 0.48);
   border-radius: 1rem;
-  background: rgba(0, 0, 0, 0.24);
+  background:
+    linear-gradient(135deg, rgba(232, 172, 150, 0.22), rgba(0, 0, 0, 0.28)),
+    rgba(0, 0, 0, 0.24);
   color: #fff;
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 18px rgba(255, 255, 255, 0.22),
+    0 0 18px rgba(232, 172, 150, 0.24);
   backdrop-filter: blur(5px);
   pointer-events: none;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.72);
@@ -176,6 +233,7 @@ a {
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #ffe8df;
 }
 
 .birthday-note strong {
@@ -185,6 +243,7 @@ a {
   font-size: 1.45rem;
   font-style: italic;
   font-weight: 600;
+  color: var(--sena-birthday-color);
 }
 
 .birthday-note span {
@@ -194,9 +253,9 @@ a {
   color: rgba(255, 255, 255, 0.86);
 }
 
-@keyframes birthday-float {
+@keyframes birthday-petal-fall {
   0% {
-    transform: translate3d(0, -10vh, 0) scale(0.65);
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
     opacity: 0;
   }
 
@@ -204,8 +263,12 @@ a {
     opacity: 0.9;
   }
 
+  48% {
+    transform: translate3d(calc(var(--birthday-drift) * -0.35), 48vh, 0) rotate(142deg);
+  }
+
   100% {
-    transform: translate3d(var(--birthday-drift), 112vh, 0) scale(1);
+    transform: translate3d(var(--birthday-drift), 112vh, 0) rotate(320deg);
     opacity: 0;
   }
 }
@@ -558,9 +621,12 @@ a {
   }
 
   .birthday-note {
-    right: 1rem;
-    bottom: 0.8rem;
-    width: 230px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: 4;
+    width: min(420px, calc(100vw - 2rem));
+    margin: 0.75rem auto -0.75rem;
     padding: 0.75rem 0.85rem;
   }
 
