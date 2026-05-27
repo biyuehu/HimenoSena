@@ -1,19 +1,22 @@
 import { html, LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
-import { QUOTES_LIST } from '../constant.ts'
+import { BIRTHDAY_QUOTES_LIST, QUOTES_LIST } from '../constant.ts'
+import { isHimenoSenaBirthday } from '../utils/birthday.ts'
 import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
 import { sleep } from '../utils/timer.ts'
 
 @customElement('sena-quotes')
 export class SenaQuotes extends LitElement {
+  private readonly quotes = isHimenoSenaBirthday() ? BIRTHDAY_QUOTES_LIST : QUOTES_LIST
+
   private getQuote(): [string, string?] {
     const prevQuote = this.currentQuote
-    const result = QUOTES_LIST[Math.floor(Math.random() * QUOTES_LIST.length)]
+    const result = this.quotes[Math.floor(Math.random() * this.quotes.length)]
     return prevQuote && prevQuote[0] === result[0] ? this.getQuote() : result
   }
 
   @state()
-  private accessor currentQuote: [string, string?] = QUOTES_LIST[QUOTES_LIST.length - 1]
+  private accessor currentQuote: [string, string?] = this.quotes[this.quotes.length - 1]
 
   @state()
   private accessor index: 0 | 1 = 0

@@ -1,5 +1,6 @@
 import { html, LitElement } from 'lit'
 import './SenaBackground.ts'
+import './SenaBirthday.ts'
 import './SenaTitle.ts'
 import './SenaQuotes.ts'
 import './SenaDetails.ts'
@@ -16,6 +17,7 @@ export class SenaComponent extends LitElement {
     return html`
     <link rel="stylesheet" href="./styles.css">
     <sena-background></sena-background>
+    <sena-birthday></sena-birthday>
     <div class="container">
       <sena-title></sena-title>
       <sena-quotes></sena-quotes>

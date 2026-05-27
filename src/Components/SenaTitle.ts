@@ -2,6 +2,7 @@ import { html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { DEFAULT_SETTINGS_START_DATE, UNIQUE } from '../constant.ts'
 import { getStorageFiled, StorageKeys } from '../data/storage.ts'
+import { isHimenoSenaBirthday } from '../utils/birthday.ts'
 import { daysSince } from '../utils/date.ts'
 import SenaEventsEmmiter from '../utils/eventsEmiter.ts'
 import I18n from '../utils/i18n.ts'
@@ -9,6 +10,8 @@ import './SenaTextBlock.ts'
 
 @customElement('sena-title')
 export class SenaTitle extends LitElement {
+  private readonly isBirthday = isHimenoSenaBirthday()
+
   private adaptTextColor(isBrightBackground: boolean) {
     const ref = this.shadowRoot?.querySelector('.title')
     if (!ref) return
@@ -36,9 +39,13 @@ export class SenaTitle extends LitElement {
     <link rel="stylesheet" href="./styles.css">
     <div class="title dark-color">
       <div>${this.unique}</div>
-      <div>${I18n.f`title.day`(
-        daysSince(getStorageFiled(StorageKeys.SETTINGS_START_DATE, DEFAULT_SETTINGS_START_DATE)) ?? 1
-      )}</div>
+      <div>${
+        this.isBirthday
+          ? 'Happy Birthday, Sena.'
+          : I18n.f`title.day`(
+              daysSince(getStorageFiled(StorageKeys.SETTINGS_START_DATE, DEFAULT_SETTINGS_START_DATE)) ?? 1
+            )
+      }</div>
     </div>
     `
   }
