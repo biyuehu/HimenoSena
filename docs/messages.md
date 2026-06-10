@@ -14,8 +14,8 @@
 
 本项目采用两种方式提交留言：
 
-- [发送邮件](./#发送邮件)
-- [通过 GitHub PR](./#通过%20GitHub%20PR)
+- [发送邮件](./messages.md#发送邮件)
+- [通过 GitHub PR](./messages.md#通过%20GitHub%20PR)
 
 对于不了解 GitHub PR 的用户可选择通过发送邮件，反之则更建议通过 GitHub PR。
 
@@ -77,8 +77,8 @@
 
 This project accepts messages in two ways:
 
-- [Send an Email](./#send-an-email)
-- [Via GitHub PR](./#via-github-pr)
+- [Send an Email](./messages.md#send-an-email)
+- [Via GitHub PR](./messages.md#via-github-pr)
 
 For users unfamiliar with GitHub PRs, sending an email is a fine choice — though if you do know your way around GitHub, the PR method is preferred.
 
@@ -139,8 +139,8 @@ Please make sure the new entry is correctly formatted.
 
 このプロジェクトでは、メッセージの投稿に二つの方法を採用しています：
 
-- [メールを送る](./#メールを送る)
-- [GitHub PR 経由](./#GitHub-PR-経由)
+- [メールを送る](./messages.md#メールを送る)
+- [GitHub PR 経由](./messages.md#GitHub-PR-経由)
 
 GitHub の PR 操作に慣れていない方はメール送信をご利用ください。逆に慣れている方には GitHub PR の方法をおすすめします。
 
