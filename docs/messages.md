@@ -1,105 +1,196 @@
 # Leave Messages
 
-- This Project adopts the GitHub Pull Request format for committing messages.
-- 本プロジェクトは GitHub Pull Request 形式でメッセージを提出します。
-- 本项目采用 GitHub Pull Request 形式提交留言。
+<!-- markdownlint-disable -->
+<div align="center">
 
-## Rules
+[English](/#English) | [日本語](/#日本語) | [简体中文](/#简体中文)
 
-- Please leave messages in English, Japanese, or Chinese.
-- メッセージは英語、日本語、または中国語で投稿してください。
-- 留言内容请使用英文、日文或中文。
+</div>
+<!-- markdownlint-enable -->
 
 ---
 
-- Although the server is not located in China, domain names are still regulated
-  by Chinese authorities, so please don't post any sensitive or unfavorable
-  content about China.
-- サーバーは中国に位置していませんが、ドメイン名は中国当局によって規制されているため、中国に関する敏感または不利なコンテンツは投稿しないでください。
+## 简体中文
 
-<!-- - 尽管服务器不在中国，但域名仍然受到中国当局的监管，因此请不要发布任何关于中国的敏感或不利内容。 -->
+本项目采用两种方式提交留言：
 
----
+- [发送邮件](/#发送邮件)
+- [通过 GitHub PR](/#通过%20GitHub%20PR)
 
-- The messages should be related to **Himeno Sena**, and only welcome and allow
-  people who like **Himeno Sena** to leave a message. Spammers, please get out.
-- メッセージは**姬野星奏**に関連するものでなければならず、**姬野星奏**が好きな人のみがメッセージを残すことができます。スパマーは出て行ってください。
+对于不了解 GitHub PR 的用户可选择通过发送邮件，反之则更建议通过 GitHub PR。
+
+### 规则
+
+- 留言内容请使用英文、日文或中文
 - 留言内容应与**姬野星奏**相关，只欢迎星奏厨进行留言，你可以在这留下你对星奏想说的任何话，或者发表感想，或者直接倾诉你的爱意！但星黑请自行滚出去。
-
----
-
-- Generally, don't limit the number of messages, but please don't post too many
-  messages in a short time. One message at a time is best.
-- 基本的に、メッセージの数に制限はありませんが、短時間に大量のメッセージを投稿しないでください。一度に1つのメッセージが最適です。
 - 一般不限制留言数量和字数，但请不要在短时间内发布过多留言，字数也不要多得太过分了（20
-  ~ 80 字最宜），一次一条最好。
+  ~ 80 字最宜），一次一条最好
+- 尽管服务器不在中国，但域名仍然受到中国当局的监管，因此请不要发布任何关于中国的敏感或不利内容
+- **发送恶意内容者或将被永久拉黑**
 
-## Steps
+### 发送邮件
 
-- Login to your GitHub account or register if you don’t have one.
-- GitHubアカウントにログインするか、まだ登録していない場合は登録してください。
-- 登录你的GitHub帐户或注册（如果尚未注册）。
+使用你的邮箱按照以下格式发送邮件：
 
----
+- 收件人：[i@himeno-sena.com](mailto://i@himeno-sena.com)：
+- 主题：姬野星奏网站留言
+- 内容：
 
-- [Fork this repository](https://github.com/biyuehu/HimenoSena/fork) to your own
-  account.
-- [このリポジトリをFork](https://github.com/biyuehu/HimenoSena/fork)
-  して自分のアカウントにコピーします。
-- [Fork 本仓库](https://github.com/biyuehu/HimenoSena/fork) 到你自己的帐户。
+```txt
+昵称：显示的留言人名字
+内容：这里填写你的留言内容...
+```
 
----
+一般地，留言会在 48 小时内被审批，请耐心等待不要重复发送。审核通过将会发送通知邮件到你的邮箱。
 
-- Open the repository which you forked on GitHub, then find the
-  `/data/messages.json` file and edit it.
-- GitHub上でフォークしたリポジトリを開き、`/data/messages.json`
-  ファイルを見つけて編集してください。
-- 打开你 Fork 的仓库，在 GitHub 上找到 `/data/messages.json` 文件并编辑它。
+### 通过 GitHub PR
 
----
-
-- Follow the previous format and append data at the end of the document before
-  `]` finishes. Please make sure the new content format is correct.
-- 前のフォーマットに従い、ドキュメントの末尾で `]`
-  が閉じる前にデータを追加してください。新しい内容の形式が正しいことを確認してください。
-- 按照前面的格式，在文档末尾和 `]` 结束之前追加数据。请确保新内容格式正确。
+- 该方式假定你熟悉基本的 GitHub 使用操作与 JSON 格式
+- 该方式被推荐，优点在于将会在成功留言后，在本项目的贡献名单中看到你自己的名字与头像
+- 登录你的GitHub帐户或注册（如果尚未注册）
+- 打开你 Fork 的仓库，在 GitHub 上找到 `/data/messages.json` 文件并编辑它
+- 按照前面的格式，在文件末尾追加数据：
 
 ```json
 [
   // ...
   {
     // ...
-    // This is previous message
-  }, // Previous message needs a "," after "}"
+    // 这是之前的留言
+  },
   {
-    "msg": "Here write messages which you want to leave",
-    "user": "Your GitHub account username (not display name)",
-    "name": "Your name or alias. (It'll display at the Website)" // Do not add "," at the end of the last field
-  } // Do not add "," here
+    "msg": "这里写下你的留言内容",
+    "user": "GitHub 用户名（不是 GitHub 显示名字）",
+    "name": "显示名字（用于显示在网站上）"
+  }
 ]
 ```
 
-For Chinese people：
+请确保新内容格式正确。
 
-- 除双引号内的内容外，双引号外的所有符号应使用英文符号，避免使用中文符号或全角符号。
-- 无效符号：`，` `【` `“`
-- 正确符号：`,` `[` `"`
-- 你的留言内容不应包含换行符。
-- 如果你输入的内容格式无效，你的 pull request 会自动关闭。
+- 保存文件并创建一个新的 pull request 到本仓库
+- 等待你的 pull request 被合并
 
 ---
 
-- Save the file and create a new pull request to this repository.
-- ファイルを保存し、このリポジトリに新しいプルリクエストを作成します。
-- 保存文件并创建一个新的 pull request 到本仓库。
+## English
+
+This project accepts messages in two ways:
+
+- [Send an Email](/#send-an-email)
+- [Via GitHub PR](/#via-github-pr)
+
+For users unfamiliar with GitHub PRs, sending an email is a fine choice — though if you do know your way around GitHub, the PR method is preferred.
+
+### Rules
+
+- Messages must be written in English, Japanese, or Chinese
+- Messages should be related to **Himeno Sena** — only Sena fans are welcome here. Feel free to leave anything you want to say to her, share your thoughts, or pour out your love! Sena haters, please see yourselves out.
+- There's generally no strict limit on the number of messages or word count, but please don't flood messages in a short period of time, and keep things reasonably concise (20–80 characters is ideal). One message at a time is best.
+- Although the server is not located in China, the domain remains subject to Chinese authority oversight — please do not post any sensitive or adverse content regarding China.
+- **Those who submit malicious content may be permanently blacklisted.**
+
+### Send an Email
+
+Send an email from your mailbox in the following format:
+
+- Recipient: [i@himeno-sena.com](mailto://i@himeno-sena.com)
+- Subject: Himeno Sena Website Message
+- Body:
+
+```txt
+Nickname: The name you want displayed
+Message: Write your message here...
+```
+
+Messages are generally reviewed within 48 hours — please be patient and avoid sending duplicates. A notification email will be sent to your inbox once approved.
+
+### Via GitHub PR
+
+- This method assumes you are familiar with basic GitHub operations and JSON formatting.
+- This method is recommended because after a successful comment, your name and profile picture will appear in the project's contribution list.
+- Log in to your GitHub account, or register one if you haven't already.
+- Open your forked repository, locate the `/data/messages.json` file on GitHub, and edit it.
+- Following the format below, append your entry at the end of the file:
+
+```json
+[
+  // ...
+  {
+    // ...
+    // This is the previous message
+  },
+  {
+    "msg": "Here write the message you want to leave",
+    "user": "Your GitHub account username (not display name)",
+    "name": "Your name or alias. (It will be displayed on the website)"
+  }
+]
+```
+
+Please make sure the new entry is correctly formatted.
+
+- Save the file and open a new pull request to this repository.
+- Wait for your pull request to be merged.
 
 ---
 
-- Wait for your pull request to be merged (You will receive a notification from
-  GitHub). It usually takes a few hours to a day. Most after 30 minutes of your
-  pull request being merged (this is time of server cache updating), you will
-  probably see your messages on the website.
-- プルリクエストがマージされるのを待ちます（GitHubから通知が届きます）。通常、数時間から1日程度かかります。プルリクエストがマージされた後、通常30分以内（サーバーキャッシュの更新時間）で、ウェブサイトでメッセージが表示されるでしょう。
-- 等待你的 pull request 被合并（你将收到 GitHub
-  的通知邮件）。通常需要几个小时到一天的时间。最多在 pull request 被合并后的 30
-  分钟后（服务器缓存更新间隔），你将可能在网站上看到你的留言。
+## 日本語
+
+このプロジェクトでは、メッセージの投稿に二つの方法を採用しています：
+
+- [メールを送る](/#メールを送る)
+- [GitHub PR 経由](/#GitHub-PR-経由)
+
+GitHub の PR 操作に慣れていない方はメール送信をご利用ください。逆に慣れている方には GitHub PR の方法をおすすめします。
+
+### ルール
+
+- メッセージは英語・日本語・中国語でご記入ください
+- メッセージの内容は**姫野星奏**に関連するものに限ります。星奏ファンのみ歓迎します。彼女への思いを綴ったり、感想を述べたり、愛を叫んだりと、何でも大歓迎です！星奏アンチの方はご退場ください。
+- メッセージの件数や文字数に原則制限はありませんが、短時間での大量投稿はご遠慮ください。文字数もほどほどに（20〜80文字程度が理想的です）。一度に一件ずつ投稿するのが望ましいです。
+- サーバーは中国国外に設置されていますが、ドメインは依然として中国当局の監督下に置かれています。中国に関する敏感または不利な内容の投稿はご遠慮ください。
+- **悪意あるコンテンツを送信した場合、永久にブロックされる可能性があります。**
+
+### メールを送る
+
+以下のフォーマットに従って、メールをお送りください：
+
+- 宛先：[i@himeno-sena.com](mailto://i@himeno-sena.com)
+- 件名：姫野星奏サイト メッセージ
+- 本文：
+
+```txt
+ニックネーム：表示したい名前
+メッセージ：ここにメッセージ内容を記入してください...
+```
+
+メッセージは通常48時間以内に審査されます。重複して送信せず、気長にお待ちください。審査通過後、登録メールアドレスに通知が届きます。
+
+### GitHub PR 経由
+
+- この方法は、GitHub の基本操作と JSON フォーマットに慣れていることを前提としています。
+- この方法は、コメントを投稿した後、プロジェクトの貢献者リストに自分の名前とアバターが表示されるため、推奨されます。
+- GitHub アカウントにログインするか、まだお持ちでない場合は新規登録してください。
+- フォークしたリポジトリを開き、`/data/messages.json` ファイルを GitHub 上で見つけて編集してください。
+- 以下のフォーマットに従い、ファイルの末尾にデータを追記してください：
+
+```json
+[
+  // ...
+  {
+    // ...
+    // これは前のメッセージです
+  },
+  {
+    "msg": "残したいメッセージをここに記入してください",
+    "user": "GitHub アカウントのユーザー名（表示名ではありません）",
+    "name": "表示したい名前またはニックネーム（サイトに表示されます）"
+  }
+]
+```
+
+新しい内容のフォーマットが正しいことを確認してください。
+
+- ファイルを保存し、本リポジトリへの新しいプルリクエストを作成してください。
+- プルリクエストがマージされるまでお待ちください。
