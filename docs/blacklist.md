@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <div align="center">
 
-[English](/#English) | [日本語](/#日本語) | [简体中文](/#简体中文)
+[English](./#English) | [日本語](./#日本語) | [简体中文](./#简体中文)
 
 </div>
 <!-- markdownlint-enable -->
