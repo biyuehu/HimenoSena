@@ -12,7 +12,7 @@ import './SenaSoundToggle.ts'
 import './SenaModal.ts'
 import './SenaNotification.ts'
 
-export class SenaComponent extends LitElement {
+export class SenaMain extends LitElement {
   public override render() {
     return html`
     <link rel="stylesheet" href="./styles.css">

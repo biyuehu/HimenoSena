@@ -15,6 +15,21 @@ export class SenaLinks extends LitElement {
       name: 'RomiNest',
       description: "Author's nest...",
       url: 'https://hotaru.icu'
+    },
+    {
+      name: 'Blacklist | 黑名单',
+      description: '',
+      url: './blacklist.html'
+    },
+    {
+      name: 'About Site | 关于本站',
+      description: '',
+      url: 'https://biyuehu.github.io/HimenoSena/docs/about'
+    },
+    {
+      name: 'Connect Sena | 联系星奏',
+      description: '',
+      url: 'mailto://i@himeno-sena.com'
     }
   ]
 
