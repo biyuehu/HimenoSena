@@ -16,8 +16,6 @@ export const GITHUB_URL = 'https://github.com'
 
 export const REPO_URL = `${GITHUB_URL}/biyuehu/HimenoSena`
 
-export const LEAVE_MESSAGES_DOCS = `${REPO_URL}/blob/main/docs/messages.md`
-
 export const BACKGROUND_LIST = [
   'https://img0.huoshen80.top/i/2025/11/11/6912c10fb847c.png',
   'https://img0.huoshen80.top/i/2025/11/11/6912c1307f2b8.png',
