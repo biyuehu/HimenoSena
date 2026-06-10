@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <div align="center">
 
-<a href="./messages.md#English">English</a> | <a href="./messages.md#日本語">日本語 | <a href="./messages.md#简体中文">简体中文</a>
+<a href="./messages.md#English">English</a> | <a href="./messages.md#日本語">日本語</a> | <a href="./messages.md#简体中文">简体中文</a>
 
 </div>
 <!-- markdownlint-enable -->

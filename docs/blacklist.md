@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <div align="center">
 
-<a href="./blacklist.md.md#English">English</a> | <a href="./blacklist.md#日本語">日本語 | <a href="./blacklist.md#简体中文">简体中文</a>
+<a href="./blacklist.md.md#English">English</a> | <a href="./blacklist.md#日本語">日本語</a> | <a href="./blacklist.md#简体中文">简体中文</a>
 
 </div>
 <!-- markdownlint-enable -->
