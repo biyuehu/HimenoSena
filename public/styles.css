@@ -403,6 +403,11 @@ a {
   color: rgba(255, 255, 255, 0.62);
 }
 
+.blacklist-info {
+  color: rgb(236, 123, 123);
+  font-size: 1.2rem
+}
+
 .blacklist-count {
   flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.84);
