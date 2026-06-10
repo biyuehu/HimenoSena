@@ -1,12 +1,6 @@
 # Add Blacklist
 
-<!-- markdownlint-disable -->
-<div align="center">
-
-<a href="./blacklist.md.md#English">English</a> | <a href="./blacklist.md#日本語">日本語</a> | <a href="./blacklist.md#简体中文">简体中文</a>
-
-</div>
-<!-- markdownlint-enable -->
+[English](./blacklist.md#English) | [日本語](./blacklist.md#日本語) | [简体中文](./blacklist.md#简体中文)
 
 ---
 

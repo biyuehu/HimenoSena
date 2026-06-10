@@ -1,12 +1,6 @@
 # Leave Messages
 
-<!-- markdownlint-disable -->
-<div align="center">
-
-<a href="./messages.md#English">English</a> | <a href="./messages.md#日本語">日本語</a> | <a href="./messages.md#简体中文">简体中文</a>
-
-</div>
-<!-- markdownlint-enable -->
+[English](./messages.md#English) | [日本語](./messages.md#日本語) | [简体中文](./messages.md#简体中文)
 
 ---
 
@@ -15,7 +9,7 @@
 本项目采用两种方式提交留言：
 
 - [发送邮件](./messages.md#发送邮件)
-- [通过 GitHub PR](./messages.md#通过-GitHub-PR)
+- [通过 GitHub PR](./messages.md#通过-github-pr)
 
 对于不了解 GitHub PR 的用户可选择通过发送邮件，反之则更建议通过 GitHub PR。
 
