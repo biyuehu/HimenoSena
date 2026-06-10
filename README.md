@@ -29,6 +29,10 @@ Hi there! This is a character website project designed for <font color="#E6AD88"
 
 Please refer to the article [我做了一个姬野星奏的专属网站](/docs/about.md) (Language: Chinese).
 
+## Changelog
+
+Please refer to the [CHANGELOG](CHANGELOG.md).
+
 ## Contributors (星厨名单)
 
 [![Contributors](https://contrib.rocks/image?repo=biyuehu/himenosena)](https://github.com/biyuehu/HimenoSena/graphs/contributors)
