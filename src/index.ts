@@ -1,12 +1,12 @@
 import { customElement } from 'lit/decorators.js'
-import { SenaComponent } from './Components/SenaComponent.ts'
+import { SenaMain } from './Components/SenaMain.ts'
 import SenaState from './data/state.ts'
 import { SenaError, showCatchedError } from './utils/error.ts'
 import { eventsLooper } from './utils/eventsEmiter.ts'
 
 function main() {
   /* Register custom elements */
-  customElement('sena-component')(SenaComponent)
+  customElement('sena-main')(SenaMain)
 
   /* Start events loop */
   eventsLooper()

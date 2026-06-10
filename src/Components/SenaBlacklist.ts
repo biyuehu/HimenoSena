@@ -9,7 +9,7 @@ type BlacklistRecord = {
   summary: string
 }
 
-export class BlacklistComponent extends LitElement {
+export class SenaBlacklist extends LitElement {
   private static readonly DATA_URL = './data/blacklist.json'
 
   private static readonly PLATFORM_META = {
@@ -31,7 +31,7 @@ export class BlacklistComponent extends LitElement {
   }
 
   private static getPlatformLabel(platform: string) {
-    return BlacklistComponent.PLATFORM_META[platform.trim() as keyof typeof BlacklistComponent.PLATFORM_META]
+    return SenaBlacklist.PLATFORM_META[platform.trim() as keyof typeof SenaBlacklist.PLATFORM_META]
   }
 
   @state()
@@ -51,7 +51,7 @@ export class BlacklistComponent extends LitElement {
     if (!keyword) return this.records
 
     return this.records.filter((record) =>
-      `${record.platform} ${BlacklistComponent.getPlatformLabel(record.platform)} ${record.id} ${record.name} ${
+      `${record.platform} ${SenaBlacklist.getPlatformLabel(record.platform)} ${record.id} ${record.name} ${
         record.summary
       }`
         .toLowerCase()
@@ -72,7 +72,7 @@ export class BlacklistComponent extends LitElement {
 
     if (this.errorMessage) {
       return html`
-        <div class="blacklist-message">无法读取 ${BlacklistComponent.DATA_URL}：${this.errorMessage}</div>
+        <div class="blacklist-message">无法读取 ${SenaBlacklist.DATA_URL}：${this.errorMessage}</div>
       `
     }
 
@@ -92,7 +92,7 @@ export class BlacklistComponent extends LitElement {
                 <span
                   class="blacklist-platform blacklist-platform-${record.platform}"
                 >
-                  ${BlacklistComponent.getPlatformLabel(record.platform)}
+                  ${SenaBlacklist.getPlatformLabel(record.platform)}
                 </span>
                 <span>${record.id || '无 ID'}</span>
               </div>
@@ -126,6 +126,10 @@ export class BlacklistComponent extends LitElement {
           }</div>
         </section>
 
+        <section class="blacklist-toolbar blacklist-info">
+          <div>欢迎帮助项目收录诋毁、辱骂、攻击、讽刺、抹黑<strong>姬野星奏</strong>及其相关内容的 spammer。具体细节请参考 <a href="https://biyuehu.github.io/HimenoSena/docs/blacklist" target="_blank">添加黑名单</a></div>
+        </section>
+
         <section class="blacklist-list" aria-live="polite">
           ${this.renderContent()}
         </section>
@@ -137,7 +141,7 @@ export class BlacklistComponent extends LitElement {
     super.connectedCallback()
 
     try {
-      const response = await fetch(BlacklistComponent.DATA_URL, { cache: 'no-store' })
+      const response = await fetch(SenaBlacklist.DATA_URL, { cache: 'no-store' })
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
@@ -147,7 +151,7 @@ export class BlacklistComponent extends LitElement {
         throw new Error('黑名单 JSON 顶层必须是数组')
       }
 
-      this.records = data.map(BlacklistComponent.normalizeRecord)
+      this.records = data.map(SenaBlacklist.normalizeRecord)
     } catch (error) {
       this.errorMessage = error instanceof Error ? error.message : String(error)
     } finally {
